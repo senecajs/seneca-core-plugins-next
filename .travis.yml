@@ -25,13 +25,12 @@ before_script:
   - echo "TEST_SUITE:$TEST_SUITE"
   - echo "TEST_SUITE_FOLDER:$TEST_SUITE_FOLDER"
   - echo "SENECA_INSTALL:$SENECA_INSTALL";
-  - if [ $TEST_SUITE_FOLDER != 'seneca' ]; then
-      git clone https://github.com/$TEST_SUITE;
-      cd $TEST_SUITE_FOLDER;
-      npm i;
-      npm uninstall seneca;
-      npm install $SENECA_INSTALL;
-    fi
+  - git clone https://github.com/$TEST_SUITE;
+  - cd $TEST_SUITE_FOLDER;
+  - git checkout v`jq -r ".version" package.json`
+  - npm i;
+  - npm uninstall seneca;
+  - npm install $SENECA_INSTALL;
 
 
 cache:
