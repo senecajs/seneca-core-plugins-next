@@ -5,9 +5,7 @@ dist: trusty
 
 node_js:
   - '4'
-  - '5'
   - '6'
-  - '7'
   - '8'
 
 env:
@@ -17,7 +15,7 @@ env:
     - TEST_SUITE=senecajs/seneca-mem-store
     - TEST_SUITE=senecajs/seneca-user
     - TEST_SUITE=senecajs/seneca-balance-client
-    - TEST_SUITE=senecajs/seneca-mesh
+
 
 before_script:
   - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
