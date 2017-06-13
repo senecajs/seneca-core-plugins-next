@@ -9,6 +9,9 @@ node_js:
   - '8'
 
 env:
+  global:
+    - TIMEOUT_MULTIPLIER=8
+
   matrix:
     - TEST_SUITE=senecajs/seneca-transport
     - TEST_SUITE=senecajs/seneca-entity
@@ -41,5 +44,5 @@ before_script:
 
 cache:
   directories:
-      - node_modules
+    - node_modules
 
