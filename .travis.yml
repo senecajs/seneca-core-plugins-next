@@ -4,29 +4,19 @@ dist: trusty
 
 
 node_js:
-  - '4'
-  - '6'
-  - '8'
+  - 4
+  - 6
+  - 8
 
 env:
   global:
     - TIMEOUT_MULTIPLIER=8
 
   matrix:
-    - TEST_SUITE=senecajs/seneca-transport
-    - TEST_SUITE=senecajs/seneca-entity
-    - TEST_SUITE=senecajs/seneca-mem-store
-    - TEST_SUITE=senecajs/seneca-user
-    - TEST_SUITE=senecajs/seneca-balance-client
-    - TEST_SUITE=senecajs/seneca-repl
-    - TEST_SUITE=senecajs/seneca-joi
-    - TEST_SUITE=senecajs/seneca-jsonfile-store
-    - TEST_SUITE=senecajs/seneca-level-store
-    - TEST_SUITE=senecajs/seneca-pino-logger
-    - TEST_SUITE=senecajs/seneca-web
-    - TEST_SUITE=senecajs/seneca-basic
-    - TEST_SUITE=senecajs/seneca-registry
-
+    - TEST_SUITE=senecajs/seneca-amqp-transport
+    exclude:
+      - node_js: 4
+      - env: TEST_SUITE=senecajs/seneca-amqp-transport
 
 before_script:
   - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
