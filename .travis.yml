@@ -4,20 +4,20 @@ dist: trusty
 
 
 node_js:
-  - 4
-  - 6
-  - 8
+  - '4'
+  - '6'
+  - '8'
 
 env:
   global:
     - TIMEOUT_MULTIPLIER=8
-
   matrix:
-    include:
-      - TEST_SUITE=senecajs/seneca-amqp-transport
-    exclude:
-      - node_js: 4
-      - env: TEST_SUITE=senecajs/seneca-amqp-transport
+    - TEST_SUITE=senecajs/seneca-amqp-transport
+
+matrix:
+  exclude:
+    - node_js: '4'
+    - env: TEST_SUITE=senecajs/seneca-amqp-transport
 
 before_script:
   - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
@@ -27,7 +27,7 @@ before_script:
   - echo "SENECA_INSTALL:$SENECA_INSTALL";
   - git clone https://github.com/$TEST_SUITE;
   - cd $TEST_SUITE_FOLDER;
-  - git checkout v`jq -r ".version" package.json`
+  - git checkout v`jq -r ".version" package.json` || git checkout `jq -r ".version" package.json`
   - npm i;
   - npm uninstall seneca;
   - npm install $SENECA_INSTALL;
