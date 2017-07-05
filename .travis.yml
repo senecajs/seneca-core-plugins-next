@@ -13,7 +13,8 @@ env:
     - TIMEOUT_MULTIPLIER=8
 
   matrix:
-    - TEST_SUITE=senecajs/seneca-amqp-transport
+    include:
+      - TEST_SUITE=senecajs/seneca-amqp-transport
     exclude:
       - node_js: 4
       - env: TEST_SUITE=senecajs/seneca-amqp-transport
