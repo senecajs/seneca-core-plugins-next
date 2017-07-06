@@ -32,7 +32,10 @@ before_script:
   - echo "SENECA_INSTALL:$SENECA_INSTALL";
   - git clone https://github.com/$TEST_SUITE;
   - cd $TEST_SUITE_FOLDER;
-  - git checkout v`jq -r ".version" package.json` || git checkout `jq -r ".version" package.json`
+  - echo "module.exports = " > travis-build-npm-details.js
+  - npm info $TEST_SUITE_FOLDER --no-progress >> travis-build-npm-details.js
+  - MODULE_VERSION=`node -e "console.log(require('./travis-build-npm-details.js')['dist-tags'].latest)"`
+  - git checkout v$MODULE_VERSION || git checkout $MODULE_VERSION
   - npm i;
   - npm uninstall seneca;
   - npm install $SENECA_INSTALL;
