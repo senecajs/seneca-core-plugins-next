@@ -14,9 +14,9 @@ env:
     - TEST_SUITE=senecajs/seneca-amqp-transport
     - TEST_SUITE=senecajs/seneca-entity
 
-#  exclude:
-#    - node_js: '8'
-#    - env: TEST_SUITE=senecajs/seneca-amqp-transport
+exclude:
+  - node_js: '8'
+  - env: TEST_SUITE=senecajs/seneca-amqp-transport
 
 before_script:
   - echo "TEST_SUITE:$TEST_SUITE"
@@ -26,9 +26,10 @@ before_script:
   - echo "SENECA_INSTALL:$SENECA_INSTALL";
   - git clone https://github.com/$TEST_SUITE;
   - cd $TEST_SUITE_FOLDER;
-  - echo "module.exports = " > travis-build-npm-details.js
-  - npm info $TEST_SUITE_FOLDER --no-progress >> travis-build-npm-details.js
-  - MODULE_VERSION=`node -e "console.log(require('./travis-build-npm-details.js')['dist-tags'].latest)"`
+  - mkdir -p tmp
+  - echo "module.exports = " > tmp/travis-build-npm-details.js
+  - npm info $TEST_SUITE_FOLDER --no-progress >> tmp/travis-build-npm-details.js
+  - MODULE_VERSION=`node -e "console.log(require('./tmp/travis-build-npm-details.js')['dist-tags'].latest)"`
   - git checkout v$MODULE_VERSION || git checkout $MODULE_VERSION
   - npm i;
   - npm uninstall seneca;
