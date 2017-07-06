@@ -18,18 +18,11 @@ matrix:
     - node_js: '8'
     - env: TEST_SUITE=senecajs/seneca-amqp-transport
 
-
-#matrix:
-#  exclude:
-#    - node_js: '4'
-#    - env: TEST_SUITE=senecajs/seneca-amqp-transport
-
-
 before_script:
-  - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
-  - SENECA_INSTALL=https://github.com/senecajs/seneca;
   - echo "TEST_SUITE:$TEST_SUITE"
+  - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
   - echo "TEST_SUITE_FOLDER:$TEST_SUITE_FOLDER"
+  - SENECA_INSTALL=https://github.com/senecajs/seneca;
   - echo "SENECA_INSTALL:$SENECA_INSTALL";
   - git clone https://github.com/$TEST_SUITE;
   - cd $TEST_SUITE_FOLDER;
