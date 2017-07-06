@@ -2,6 +2,9 @@ language: node_js
 sudo: required
 dist: trusty
 
+services:
+  - rabbitmq
+
 node_js:
   - '4'
   - '6'
@@ -13,7 +16,7 @@ env:
 
 matrix:
   exclude:
-    - node_js: '8'
+    - node_js: '4'
       env: TEST_SUITE=senecajs/seneca-amqp-transport
       
 
