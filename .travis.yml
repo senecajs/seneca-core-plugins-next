@@ -10,12 +10,13 @@ node_js:
 env:
   global:
     - TIMEOUT_MULTIPLIER=8
-  matrix:
-    include:
-      - TEST_SUITE=senecajs/seneca-amqp-transport
-    exclude:
-      - node_js: '4'
-      - env: TEST_SUITE=senecajs/seneca-amqp-transport
+
+matrix:
+  include:
+    - TEST_SUITE=senecajs/seneca-amqp-transport
+  exclude:
+    - node_js: '8'
+    - env: TEST_SUITE=senecajs/seneca-amqp-transport
 
 
 #matrix:
