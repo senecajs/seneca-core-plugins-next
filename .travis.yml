@@ -13,10 +13,10 @@ env:
   matrix:
     - TEST_SUITE=senecajs/seneca-amqp-transport
 
-matrix:
-  exclude:
-    - node_js: '4'
-    - env: TEST_SUITE=senecajs/seneca-amqp-transport
+#matrix:
+#  exclude:
+#    - node_js: '4'
+#    - env: TEST_SUITE=senecajs/seneca-amqp-transport
 
 before_script:
   - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
