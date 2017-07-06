@@ -8,14 +8,17 @@ node_js:
   - '8'
 
 env:
-  global:
-    - TIMEOUT_MULTIPLIER=8
-  matrix:
-    - TEST_SUITE=senecajs/seneca-amqp-transport
-    - TEST_SUITE=senecajs/seneca-entity
+  - TEST_SUITE=senecajs/seneca-amqp-transport
+  - TEST_SUITE=senecajs/seneca-entity
 
+matrix:
+  exclude:
+    - node_js: '8'
+      env: TEST_SUITE=senecajs/seneca-amqp-transport
+      
 
 before_script:
+  - TIMEOUT_MULTIPLIER=8
   - echo "TEST_SUITE:$TEST_SUITE"
   - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
   - echo "TEST_SUITE_FOLDER:$TEST_SUITE_FOLDER"
