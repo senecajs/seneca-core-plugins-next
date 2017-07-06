@@ -11,8 +11,20 @@ node_js:
   - '8'
 
 env:
-  - TEST_SUITE=senecajs/seneca-amqp-transport
-  - TEST_SUITE=senecajs/seneca-entity
+    - TEST_SUITE=senecajs/seneca-transport
+    - TEST_SUITE=senecajs/seneca-entity
+    - TEST_SUITE=senecajs/seneca-mem-store
+    - TEST_SUITE=senecajs/seneca-user
+    - TEST_SUITE=senecajs/seneca-balance-client
+    - TEST_SUITE=senecajs/seneca-repl
+    - TEST_SUITE=senecajs/seneca-joi
+    - TEST_SUITE=senecajs/seneca-jsonfile-store
+    - TEST_SUITE=senecajs/seneca-level-store
+    - TEST_SUITE=senecajs/seneca-pino-logger
+    - TEST_SUITE=senecajs/seneca-web
+    - TEST_SUITE=senecajs/seneca-basic
+    - TEST_SUITE=senecajs/seneca-registry
+    - TEST_SUITE=senecajs/seneca-amqp-transport
 
 matrix:
   exclude:
