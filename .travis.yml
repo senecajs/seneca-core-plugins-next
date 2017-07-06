@@ -10,13 +10,16 @@ node_js:
 env:
   global:
     - TIMEOUT_MULTIPLIER=8
-  matrix:
-    - TEST_SUITE=senecajs/seneca-amqp-transport
-    - TEST_SUITE=senecajs/seneca-entity
 
-exclude:
-  - node_js: '8'
-  - env: TEST_SUITE=senecajs/seneca-amqp-transport
+
+matrix:
+    include:
+      - TEST_SUITE=senecajs/seneca-amqp-transport
+      - TEST_SUITE=senecajs/seneca-entity
+    exclude:
+      - node_js: '8'
+      - env: TEST_SUITE=senecajs/seneca-amqp-transport
+
 
 before_script:
   - echo "TEST_SUITE:$TEST_SUITE"
@@ -30,6 +33,7 @@ before_script:
   - echo "module.exports = " > tmp/travis-build-npm-details.js
   - npm info $TEST_SUITE_FOLDER --no-progress >> tmp/travis-build-npm-details.js
   - MODULE_VERSION=`node -e "console.log(require('./tmp/travis-build-npm-details.js')['dist-tags'].latest)"`
+  - rm -f tmp/travis-build-npm-details.js
   - git checkout v$MODULE_VERSION || git checkout $MODULE_VERSION
   - npm i;
   - npm uninstall seneca;
