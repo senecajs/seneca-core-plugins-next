@@ -9,6 +9,7 @@ node_js:
   - '4'
   - '6'
   - '8'
+  - '10'
 
 env:
     - TEST_SUITE=senecajs/seneca-transport
@@ -53,9 +54,4 @@ before_script:
   - npm i;
   - npm uninstall seneca;
   - npm install $SENECA_INSTALL;
-
-
-cache:
-  directories:
-    - node_modules
 
