@@ -37,7 +37,6 @@ matrix:
       
 
 before_script:
-  - npm install -g npm
   - TIMEOUT_MULTIPLIER=8
   - echo "TEST_SUITE:$TEST_SUITE"
   - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
