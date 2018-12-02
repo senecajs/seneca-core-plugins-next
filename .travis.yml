@@ -37,6 +37,7 @@ matrix:
       
 
 before_script:
+  - npm install -g npm
   - TIMEOUT_MULTIPLIER=8
   - echo "TEST_SUITE:$TEST_SUITE"
   - TEST_SUITE_FOLDER=$(basename $TEST_SUITE)
@@ -45,11 +46,12 @@ before_script:
   - echo "SENECA_INSTALL:$SENECA_INSTALL";
   - git clone https://github.com/$TEST_SUITE;
   - cd $TEST_SUITE_FOLDER;
-  - mkdir -p tmp
-  - echo "module.exports = " > tmp/travis-build-npm-details.js
-  - npm info $TEST_SUITE_FOLDER --no-progress >> tmp/travis-build-npm-details.js
-  - MODULE_VERSION=`node -e "console.log(require('./tmp/travis-build-npm-details.js')['dist-tags'].latest)"`
-  - rm -f tmp/travis-build-npm-details.js
+#  - mkdir -p tmp
+#  - echo "module.exports = " > tmp/travis-build-npm-details.js
+#  - npm info $TEST_SUITE_FOLDER --no-progress >> tmp/travis-build-npm-details.js
+#  - MODULE_VERSION=`node -e "console.log(require('./tmp/travis-build-npm-details.js')['dist-tags'].latest)"`
+#  - rm -f tmp/travis-build-npm-details.js
+  - MODULE_VERSION=`npm info . dist-tags.latest`
   - git checkout v$MODULE_VERSION || git checkout $MODULE_VERSION
   - npm i;
   - npm uninstall seneca;
