@@ -12,6 +12,8 @@ node_js:
   - '10'
 
 env:
+    - TEST_SUITE=voxgig/seneca-member
+    - TEST_SUITE=voxgig/seneca-group
     - TEST_SUITE=senecajs/seneca-transport
     - TEST_SUITE=senecajs/seneca-entity
     - TEST_SUITE=senecajs/seneca-mem-store
