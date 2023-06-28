@@ -1,0 +1,26 @@
+{
+  "name": "core-plugins-next",
+  "version": "0.0.1",
+  "description": "Run all the unit tests of the last published versions of the core plugins against [Seneca](senecajs.org) master.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senecajs/seneca-core-plugins-next.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/senecajs/seneca-core-plugins-next/issues"
+  },
+  "homepage": "https://github.com/senecajs/seneca-core-plugins-next#readme",
+  "dependencies": {
+    "@seneca/gateway": "^0.6.2",
+    "seneca": "^3.30.1",
+    "seneca-entity": "^22.1.0",
+    "seneca-flow": "^1.0.10",
+    "seneca-promisify": "^3.4.0"
+  }
+}
